@@ -4,13 +4,18 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\Comments.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\UPS\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,5 +25,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BlitzkriegSoftware.PCF.CFEnvParser\BlitzkriegSoftware.PCF.CFEnvParser.csproj" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy ..\UPS\*.json .\wwwroot\UPS\ /y /v" />
+  </Target>
 
 </Project>

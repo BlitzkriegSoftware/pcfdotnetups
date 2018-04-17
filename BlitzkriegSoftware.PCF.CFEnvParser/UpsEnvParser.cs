@@ -30,10 +30,21 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
 
         #region "Properties"
 
+        private bool _isLocal = true;
+
         /// <summary>
         /// Is configuration aquired locally (false means from UPS)
         /// </summary>
-        public bool IsLocal { get; set; }
+        public bool IsLocal
+        {
+            get
+            {
+                if (_upsvalues == null) LoadValues();
+                return _isLocal;
+            }
+
+            private set { _isLocal = value; }
+        }
 
         /// <summary>
         /// Local path (folder) to UPS JSON files
@@ -98,9 +109,9 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
 
             IEnumerable<JToken> services = json.SelectTokens("$..user-provided");
 
-            if(services != null)
+            if (services != null)
             {
-                foreach(var s in services.Children())
+                foreach (var s in services.Children())
                 {
                     var creds = new Dictionary<string, string>();
                     var serviceName = s.SelectToken("name").ToString();
@@ -138,7 +149,7 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
                     vals.Add(name, value);
                 }
 
-                this.UpsValues.Add(serviceName, vals);
+                if(!this.UpsValues.ContainsKey(serviceName)) this.UpsValues.Add(serviceName, vals);
             }
         }
 
@@ -176,7 +187,7 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
         public bool UpsKeyExists(string upsName, string key)
         {
             var ok = false;
-            if(UpsExists(upsName))
+            if (UpsExists(upsName))
             {
                 var vals = this.UpsValues[upsName];
                 if (vals.ContainsKey(key)) ok = true;
@@ -193,11 +204,12 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
         /// <returns>Value or defaultValue (default: empty string)</returns>
         public string UpsKeyGetValue(string upsName, string key, string defaultValue = "")
         {
-            if(UpsKeyExists(upsName, key))
+            if (UpsKeyExists(upsName, key))
             {
                 var vals = this.UpsValues[upsName];
                 return vals[key];
-            } else
+            }
+            else
             {
                 return defaultValue;
             }
@@ -211,7 +223,7 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
         public IEnumerable<string> UpsKeys(string upsName)
         {
             var list = new List<string>();
-            if(UpsExists(upsName))
+            if (UpsExists(upsName))
             {
                 var ups = this.UpsValues[upsName];
                 list.AddRange(ups.Keys);
@@ -224,12 +236,12 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
         /// </summary>
         /// <param name="upsName">Name of UPS</param>
         /// <returns>Return name, value dictionary</returns>
-        public IDictionary<string,string> UpsKeyValues(string upsName)
+        public IDictionary<string, string> UpsKeyValues(string upsName)
         {
             var d = new Dictionary<string, string>();
             if (UpsExists(upsName))
             {
-                d =  this.UpsValues[upsName];
+                d = this.UpsValues[upsName];
             }
             return d;
         }

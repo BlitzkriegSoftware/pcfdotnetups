@@ -13,4 +13,16 @@
     <ProjectReference Include="..\BlitzkriegSoftware.PCF.CFEnvParser\BlitzkriegSoftware.PCF.CFEnvParser.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UPS\" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy ..\UPS\*.json .\UPS\ /y /v" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist .\bin\Debug\netcoreapp2.0\UPS\ mkdir .\bin\Debug\netcoreapp2.0\UPS\&#xD;&#xA;copy .\ups\*.json .\bin\Debug\netcoreapp2.0\UPS\ /y /v" />
+  </Target>
+
 </Project>
