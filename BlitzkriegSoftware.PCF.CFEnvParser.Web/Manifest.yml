@@ -1,0 +1,12 @@
+applications:
+- name: PcfDotNetCoreWeb
+  memory: 512m
+  stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack.git
+  health-check-type: process
+  path: .
+
+services:
+    - vcapdemo-service01
+    - vcapdemo-service02
+ 

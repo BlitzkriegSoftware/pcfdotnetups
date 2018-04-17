@@ -34,6 +34,13 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser.Console
             Assert.True("Empty", string.IsNullOrWhiteSpace(value));
 
             Environment.ExitCode = 0;
+
+            System.Console.WriteLine("Please `cf stop PcfDotNetCoreConsole`!");
+
+            while(true)
+            {
+                System.Threading.Thread.Sleep(1000);
+            }
         }
     }
 }

@@ -1,0 +1,12 @@
+applications:
+- name: PcfDotNetCoreConsole
+  memory: 512m
+  stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack.git
+  health-check-type: process
+  path: .\bin\Debug\netcoreapp2.0\ubuntu.14.04-x64\publish
+  no-route: true
+
+services:
+    - vcapdemo-service01
+    - vcapdemo-service02
