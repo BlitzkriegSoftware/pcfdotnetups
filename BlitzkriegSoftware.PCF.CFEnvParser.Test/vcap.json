@@ -1,0 +1,43 @@
+﻿{
+  "VCAP_SERVICES": {
+    "tag01": [
+      {
+        "credentials": {
+          "moo": "cows"
+        },
+        "name": "tag01",
+        "syslog_drain_url": "",
+        "tags": [],
+        "volume_mounts": []
+      }
+    ],
+    "user-provided": [
+      {
+        "credentials": {
+          "name": "Service01",
+          "s1Data01": "s1Value01",
+          "s1Data02": "s1Value02",
+          "Service1Other": "Other Stuff"
+        },
+        "label": "user-provided",
+        "name": "vcapdemo-service01",
+        "syslog_drain_url": "",
+        "tags": [],
+        "volume_mounts": []
+      },
+      {
+        "credentials": {
+          "name": "Service02",
+          "s2Data01": "s2Value01",
+          "s2Data02": "s2Value02",
+          "S2Info": "Some info about s2"
+        },
+        "label": "user-provided",
+        "name": "vcapdemo-service02",
+        "syslog_drain_url": "",
+        "tags": [],
+        "volume_mounts": []
+      }
+    ]
+  }
+}
