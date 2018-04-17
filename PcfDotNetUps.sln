@@ -17,6 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UPS", "UPS", "{A71400C7-D92
 		UPS\vcapdemo-service02.json = UPS\vcapdemo-service02.json
 	EndProjectSection
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "PcfDotNetUpsParser", "Sandcastle\PcfDotNetUpsParser.shfbproj", "{0DC981B3-8E01-4CA1-B041-900B436CB0CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{AF2F8FD8-D5AC-4EEB-8A07-D497F4054FEF}"
+	ProjectSection(SolutionItems) = preProject
+		Sandcastle\Help\BlitzkriegSoftware.PCF.CFEnvParser.chm = Sandcastle\Help\BlitzkriegSoftware.PCF.CFEnvParser.chm
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +46,10 @@ Global
 		{116E1387-707B-4A99-AB77-87DD9713D412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{116E1387-707B-4A99-AB77-87DD9713D412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{116E1387-707B-4A99-AB77-87DD9713D412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC981B3-8E01-4CA1-B041-900B436CB0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC981B3-8E01-4CA1-B041-900B436CB0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC981B3-8E01-4CA1-B041-900B436CB0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC981B3-8E01-4CA1-B041-900B436CB0CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
