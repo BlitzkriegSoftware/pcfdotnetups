@@ -56,6 +56,32 @@ To see if the values came from JSON files (local) or the CF UPS you can:
 var isFromJsonFiles = upsParser.IsLocal;
 ```
 
+## Pushing to Cloud Foundry ##
+
+There are two steps:
+
+1. Create the UPS(s)
+2. Push one or more of the apps
+
+In all cases a *DOS* command scipt is used. 
+
+> Important: Make sure you CD into the directory the script is in, to use it correctly
+
+### Pushing the UPS ###
+
+The `UPS` folder has a script `make_ups_services.cmd` that will create the UPS from the provided JSON files.
+
+As always make sure you are logged into CF and have set your desired target e.g. ORG and SPACE.
+
+### Pushing the applications ###
+
+Each deployable unit e.g. the console app and web site has the following to support CF:
+
+* A `.cfignore` file which will exclude the UPS (JSON) folder from being deployed remotely
+* A `Manifest.yml` file that tells CF what buildpack, target, etc. to use
+* A `pushit.cmd` file that does a `dot net publish ...` and then a `cf push -f Manifest.yml`
+
+So, once you are logged into CF, and have set your target correctly, you can use the pushit script to deploy one or the other of the apps to CF. Remember that the web app has no `/` so after deployment use `/swagger` instead.
 ## About me ##
 
 **Stuart Williams**
