@@ -123,6 +123,10 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
                         var value = ((Newtonsoft.Json.Linq.JProperty)item).Value.ToString();
                         creds.Add(key, value);
                     }
+                    if (this.UpsValues.ContainsKey(serviceName))
+                    {
+                        this.UpsValues.Remove(serviceName);
+                    }
                     this.UpsValues.Add(serviceName, creds);
                 }
             }
@@ -149,7 +153,11 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
                     vals.Add(name, value);
                 }
 
-                if(!this.UpsValues.ContainsKey(serviceName)) this.UpsValues.Add(serviceName, vals);
+                if (this.UpsValues.ContainsKey(serviceName))
+                {
+                    this.UpsValues.Remove(serviceName);
+                }
+                this.UpsValues.Add(serviceName, vals);
             }
         }
 

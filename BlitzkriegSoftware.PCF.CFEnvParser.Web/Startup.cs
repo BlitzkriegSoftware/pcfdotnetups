@@ -70,7 +70,6 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser.Web
             app.UseMvc();
 
             app.UseSwagger();
-
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CF Env Demo");

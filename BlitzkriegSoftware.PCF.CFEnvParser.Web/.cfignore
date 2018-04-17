@@ -1,2 +1,2 @@
- 
-wwwroot/UPS 
+# Ignore UPS files
+UPS/

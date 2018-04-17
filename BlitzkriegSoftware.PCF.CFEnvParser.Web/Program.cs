@@ -21,6 +21,10 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser.Web
         /// <param name="args">args</param>
         public static void Main(string[] args)
         {
+            var config = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build();
+
             BuildWebHost(args).Run();
         }
 
