@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.IO;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Linq;
 
 namespace BlitzkriegSoftware.PCF.CFEnvParser
 {
@@ -208,7 +207,7 @@ namespace BlitzkriegSoftware.PCF.CFEnvParser
         /// </summary>
         /// <param name="upsName">Name of UPS</param>
         /// <param name="key">Key to UPS value</param>
-        /// <param name="defaultValue"></param>
+        /// <param name="defaultValue">Default value (empty string)</param>
         /// <returns>Value or defaultValue (default: empty string)</returns>
         public string UpsKeyGetValue(string upsName, string key, string defaultValue = "")
         {
